@@ -3,6 +3,8 @@ import os
 from flask_cors import CORS, cross_origin
 
 import textToSPeech
+import textToSPeech1
+import textToSPeech2
 
 os.putenv('LANG', 'en_US.UTF-8')
 os.putenv('LC_ALL', 'en_US.UTF-8')
@@ -22,6 +24,21 @@ def predictRoute():
     result = textToSPeech.text2Speech(data)
     return {"data" : result.decode("utf-8")}
 
+
+@app.route("/predict1", methods=['POST'])
+@cross_origin()
+def predictRoute1():
+    data = request.json['data']
+    result = textToSPeech1.text2Speech(data)
+    return {"data" : result.decode("utf-8")}
+
+
+@app.route("/predict2", methods=['POST'])
+@cross_origin()
+def predictRoute2():
+    data = request.json['data']
+    result = textToSPeech2.text2Speech(data)
+    return {"data" : result.decode("utf-8")}
 
 #port = int(os.getenv("PORT"))
 if __name__ == "__main__":
