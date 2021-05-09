@@ -2,3 +2,4 @@ gtts
 flask
 flask-cors
 ibm_watson
+gunicorn
